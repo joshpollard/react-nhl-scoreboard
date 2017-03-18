@@ -3,37 +3,51 @@ import logo from './logo.svg';
 import Scoreboard from './scoreboard';
 import './App.css';
 var request = require('request');
+var moment = require('moment');
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { myGame: {}, myGames: []};
+    this.state = { myGames: [], myTeams: []};
+    
   }
 
-  componentWillMount() {
-    
-    // request('https://statsapi.web.nhl.com/api/v1/schedule?startDate=2017-3-13&endDate=2017-3-13', function (error, response, body) {      
-    //   var games = JSON.parse(body);
-    //   var game = games.dates[0].games[0];
-    //   //this.setState({myGame: game});
-    //   that.setState({comment: 'Hello'});
-    // });
+  componentDidMount = () => {
+      const gameDate = moment().format('YYYY-M-D');
+      
+      const teamsUrl = 'https://statsapi.web.nhl.com/api/v1/teams/';
+      request(teamsUrl,  (error, response, body) => {      
+        
+        const teams = JSON.parse(body).teams;
+        
+        this.setState( { myTeams: teams.teams } );
+        
+        const scoresUrl = 'https://statsapi.web.nhl.com/api/v1/schedule?startDate=' + gameDate + '&endDate=' + gameDate + '&expand=schedule.linescore';
 
-    var xhr = new XMLHttpRequest();
+        request(scoresUrl,  (error, response, body) => {      
+          
+          const games = JSON.parse(body).dates[0].games;
+          
+          const supplementedGames = games.map(function (g){
+            
+            const away = teams.find(x => x.id === g.teams['away'].team.id);
+            const home = teams.find(x => x.id === g.teams['home'].team.id);
+            g.awayDetails = away;
+            g.homeDetails = home;
+            return g;
+          } );
+          console.log(supplementedGames);
+          this.setState({myGames: supplementedGames});
+        });
+      });
 
-      // Make a call to the server using the url property we defined down below.
-      // Use the JSON result as the data property for this ThingBox.
-      xhr.open('get', 'https://statsapi.web.nhl.com/api/v1/schedule?startDate=2017-3-13&endDate=2017-3-13', true);
-      xhr.onload = function()  {
-          var games = JSON.parse(xhr.responseText);
-          var game = games.dates[0].games[0];
-          this.setState( { myGame: game } );
-          this.setState({myGames: games.dates[0].games});
-          //debugger;
-      }.bind(this);
-      xhr.send();    
+      
+
+      
+
   }
   
+
   render() {
     
     const listItems = this.state.myGames.map((thisGame) => 
@@ -43,9 +57,8 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">          
-          <h2>Welcome to React</h2>
+          <h2>{moment().format('MMMM Do')}</h2>
         </div>
-        {/*<Scoreboard game={this.state.myGame} />*/}
       {listItems}  
         
       </div>

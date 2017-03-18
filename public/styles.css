@@ -1,3 +1,46 @@
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b5bdc8+0,828c95+36,28343b+100;Grey+Black+3D */
+body {
+    background-color: #555;
+    color: white;
+/*background: rgba(56,85,92,1);
+background: -moz-linear-gradient(top, rgba(56,85,92,1) 0%, rgba(46,76,84,1) 41%, rgba(0,0,0,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(56,85,92,1)), color-stop(41%, rgba(46,76,84,1)), color-stop(100%, rgba(0,0,0,1)));
+background: -webkit-linear-gradient(top, rgba(56,85,92,1) 0%, rgba(46,76,84,1) 41%, rgba(0,0,0,1) 100%);
+background: -o-linear-gradient(top, rgba(56,85,92,1) 0%, rgba(46,76,84,1) 41%, rgba(0,0,0,1) 100%);
+background: -ms-linear-gradient(top, rgba(56,85,92,1) 0%, rgba(46,76,84,1) 41%, rgba(0,0,0,1) 100%);
+background: linear-gradient(to bottom, rgba(56,85,92,1) 0%, rgba(46,76,84,1) 41%, rgba(0,0,0,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#38555c', endColorstr='#000000', GradientType=0 );*/
+
+
+}
+
 .scoreboard-container {
+    margin-bottom: 20px;
+    width: 250px;
+}
+
+.team-row {
+    width: 100%;
+    background-color: #333;
+    color: white;
     margin-bottom: 10px;
+    padding: 10px;
+    overflow: auto;
+    font-weight: bold;
+    border-left: 5px solid;
+}
+
+.team-name {
+    float: left;
+    width: 75%;
+}
+
+.score {
+    float: left;
+    width: 25%;
+}
+
+.time-display {
+    widows: 100%;
+    font-size:14px;
 }
