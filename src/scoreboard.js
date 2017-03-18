@@ -7,141 +7,45 @@ class Scoreboard extends Component {
         
         let value = 'black';
 
-        if (team != null) {
-
-            switch(team)
-            {
-                case "ANA":
-                    value = "#9d7746";
-                    break;
-
-                case "BOS":
-                    value = "#ffc422";
-                    break;
-
-                case "BUF":
-                    value = "#062045";
-                    break;
-
-                case "CAL":
-                    value = "#d22402";
-                    break;
-
-                case "CAR":
-                    value = "#e00809";
-                    break;
-
-                case "CHI":
-                    value = "#ff0000";
-                    break;
-
-                case "COL":
-                    value = "#74182d";
-                    break;
-
-                case "CBJ":
-                    value = "#03296a";
-                    break;
-
-                case "DAL":
-                    value = "#0c724c";
-                    break;
-
-                case "DET":
-                    value = "#ff0000";
-                    break;
-
-                case "EDM":
-                    value = "#042664";
-                    break;
-
-                case "FLA":
-                    value = "#cc0a2c";
-                    break;
-
-                case "LAK":
-                    value = "#a8a9ad";
-                    break;
-
-                case "MIN":
-                    value = "#064635";
-                    break;
-
-                case "MTL":
-                    value = "#FF0000";
-                    break;
-
-                case "NSH":
-                    value = "#fcbe34";
-                    break;
-
-                case "NJD":
-                    value = "#c40e2c";
-                    break;
-
-                case "NYI":
-                    value = "#00529c";
-                    break;
-
-                case "NYR":
-                    value = "#005ebc";
-                    break;
-
-                case "OTT":
-                    value = "#FF0000";
-                    break;
-
-                case "PHI":
-                    value = "#f47a3c";
-                    break;
-
-                case "PHX":
-                    value = "#842234";
-                    break;
-
-                case "PIT":
-                    value = "#ccb87b";
-                    break;
-
-                case "SJS":
-                    value = "#007889";
-                    break;
-
-                case "STL":
-                    value = "#00529b";
-                    break;
-
-                case "TBL":
-                    value = "#1c427c";
-                    break;
-
-                case "TOR":
-                    value = "#013775";
-                    break;
-
-                case "VAN":
-                    value = "#173059";
-                    break;
-
-                case "WAS":
-                    value = "#FF0000";
-                    break;
-
-                case "WPG":
-                    value = "#042e64";
-                    break;
-
-                default:
-                    value = "#FF0000";
-                    break;
-            }
-
+        var teamColors =
+        {
+            ANA:'#9d7746',
+            BOS:'#ffc422',
+            BUF:'#062045',
+            CGY:'#d22402',
+            CAR:'#e00809',
+            CHI:'#ff0000',
+            COL:'#74182d',
+            CBJ:'#03296a',
+            DAL:'#0c724c',
+            DET:'#ff0000',
+            EDM:'#042664',
+            FLA:'#cc0a2c',
+            LAK:'#a8a9ad',
+            MIN:'#064635',
+            MTL:'#FF0000',
+            NSH:'#fcbe34',
+            NJD:'#c40e2c',
+            NYI:'#00529c',
+            NYR:'#005ebc',
+            OTT:'#FF0000',
+            PHI:'#f47a3c',
+            PHX:'#842234',
+            PIT:'#ccb87b',
+            SJS:'#007889',
+            STL:'#00529b',
+            TBL:'#1c427c',
+            TOR:'#013775',
+            VAN:'#173059',
+            WAS:'#FF0000',
+            WPG:'#042e64'
         }
-        
 
-        return  {
-            borderLeftColor: value
-        };
+        if (team != null) {
+            value = teamColors[team];
+        }
+
+        return  { borderLeftColor: value };
     }
 
     processTimeDisplay() {
@@ -152,7 +56,7 @@ class Scoreboard extends Component {
                 result = 'Final';
 
                 if (ls.currentPeriodOrdinal === 'SO') {
-                    result += ' - SO';
+                    result += ' SO';
                 }
                 
             } else {
@@ -194,8 +98,6 @@ class Scoreboard extends Component {
             game.homeScore = this.props.game.teams['home'].score;
             game.homeTeamName = this.props.game.teams['home'].team.name;
         } 
-
-        
 
         return (
             <div className="scoreboard-container">
