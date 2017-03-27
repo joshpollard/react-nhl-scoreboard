@@ -10,6 +10,7 @@ class Scoreboard extends Component {
         var teamColors =
         {
             ANA:'#9d7746',
+            ARI:'#842234',
             BOS:'#ffc422',
             BUF:'#062045',
             CGY:'#d22402',
@@ -30,14 +31,13 @@ class Scoreboard extends Component {
             NYR:'#005ebc',
             OTT:'#FF0000',
             PHI:'#f47a3c',
-            PHX:'#842234',
             PIT:'#ccb87b',
             SJS:'#007889',
             STL:'#00529b',
             TBL:'#1c427c',
             TOR:'#013775',
             VAN:'#173059',
-            WAS:'#FF0000',
+            WSH:'#FF0000',
             WPG:'#042e64'
         }
 
@@ -81,16 +81,11 @@ class Scoreboard extends Component {
 
     render() {
         
-        let awayScore = '';
         let game = { awayScore: '', homeScore: '', awayTeamName: '', homeTeamName: ''};
-        let homeTeam = {};
-        let awayTeam = {};
         let homeDetails = {};
         let awayDetails = {};
 
         if (this.props.game.teams != null) {
-            homeTeam = this.props.game.teams['home'];
-            awayTeam = this.props.game.teams['away'];
             homeDetails = this.props.game.homeDetails;
             awayDetails = this.props.game.awayDetails;
             game.awayScore = this.props.game.teams['away'].score;

@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import Scoreboard from './scoreboard';
+import GameService from './GameService';
+
 import './App.css';
+// import TeamsJson from './teams.json';
+
 var request = require('request');
 var moment = require('moment');
 
@@ -13,11 +17,18 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-      const gameDate = moment().format('YYYY-M-D');
+    this.getData();
+  }
+
+  getData() {
+    const gameDate = moment().format('YYYY-M-D');
+    const teamsUrl = 'https://statsapi.web.nhl.com/api/v1/teams/';
+
+    request(teamsUrl,  (error, response, body) => {      
       
-      const teamsUrl = 'https://statsapi.web.nhl.com/api/v1/teams/';
-      request(teamsUrl,  (error, response, body) => {      
-        
+      if (error != undefined) {
+        console.log(error.message);
+      } else {
         const teams = JSON.parse(body).teams;
         
         this.setState( { myTeams: teams.teams } );
@@ -38,13 +49,13 @@ class App extends Component {
           } );
           console.log(supplementedGames);
           this.setState({myGames: supplementedGames});
-        });
-      });
+        });  
+      }
 
       
+    });
 
-      
-
+    
   }
   
 
