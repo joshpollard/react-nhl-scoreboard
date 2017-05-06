@@ -1,0 +1,19 @@
+.today-header {
+    font-size: 30px;
+    line-height: 33px;
+    margin: 0 20px;
+}
+
+.not-today-header {
+    color: #BBB;
+}
+
+.not-today-header a, a:visited {
+    color: #BBB;
+    text-decoration: underline;
+}
+
+#day-chooser {
+    margin-bottom: 20px;
+    text-align: center;
+}

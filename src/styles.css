@@ -1,0 +1,54 @@
+body {
+    background-color: #555;
+    color: white;
+}
+
+.scoreboard-container {
+    margin-bottom: 20px;
+    width: 250px;
+}
+
+.team-row {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    margin-bottom: 10px;
+    padding: 10px;
+    overflow: auto;
+    font-weight: bold;
+    border-left: 7px solid;
+}
+
+.team-name {
+    float: left;
+    width: 75%;
+}
+
+.score {
+    float: left;
+    width: 25%;
+}
+
+.time-display {
+    widows: 100%;
+    font-size:14px;
+}
+
+/*.today-header {
+    font-size: 30px;
+    line-height: 33px;
+    margin: 0 20px;
+}
+
+.not-today-header {
+    color: #BBB;
+}
+
+.not-today-header a, a:visited {
+    color: #BBB;
+    text-decoration: underline;
+}
+
+#day-chooser {
+    margin-bottom: 20px;
+}*/

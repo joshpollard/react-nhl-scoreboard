@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './daychooser.css';
+
 var moment = require('moment');
 
 class DayChooser extends Component {

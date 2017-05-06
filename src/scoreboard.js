@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 var moment = require('moment');
+import './scoreboard.css';
+
 
 class Scoreboard extends Component {
+    constructor (props) {
+        super(props);
+
+        // This binding is necessary to make `this` work in the callback
+        this.selectGame = this.selectGame.bind(this);
+    }
     
     getTeamColor(team) {
         
@@ -79,6 +87,10 @@ class Scoreboard extends Component {
         return result;
     }
 
+    selectGame() {
+        this.props.selectGame(this.props.game);
+    }
+
     render() {
         
         let game = { awayScore: '', homeScore: '', awayTeamName: '', homeTeamName: ''};
@@ -95,7 +107,7 @@ class Scoreboard extends Component {
         } 
 
         return (
-            <div className="scoreboard-container">
+            <div className="scoreboard-container" onClick={this.selectGame}>
                 
                 <div className='time-display text-right'>{this.processTimeDisplay()}</div>
 
